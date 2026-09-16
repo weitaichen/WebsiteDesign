@@ -1,0 +1,180 @@
+<!doctype html>
+<html lang="zh-Hant-TW" data-style="a">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>聯絡我們｜範例營造股份有限公司</title>
+<meta name="description" content="聯絡範例營造股份有限公司：公司地址、電話、傳真、Email、營業時間與線上留言表單。">
+<link rel="icon" type="image/png" sizes="32x32" href="../shared/img/favicon-32x32.png">
+<link rel="apple-touch-icon" href="../shared/img/apple-touch-icon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=LXGW+WenKai+TC:wght@700&amp;family=Noto+Sans+TC:wght@400;500;700&amp;display=swap">
+<link rel="stylesheet" href="../shared/base.css">
+<link rel="stylesheet" href="style.css">
+<script src="../shared/content.js" defer></script>
+<script src="../shared/site.js" defer></script>
+</head>
+<body>
+<a class="skip-link" href="#main">跳到主要內容</a>
+
+<header class="site-header">
+  <div class="wrap header-bar">
+    <a class="brand" href="index.html">
+      <img class="brand-mark" src="../shared/img/logo-mark.png" width="44" height="44" alt="">
+      <span class="brand-text">
+        <span class="brand-name" data-bind="company.shortName"></span>
+        <span class="brand-en" lang="en" data-bind="company.shortNameEn"></span>
+      </span>
+    </a>
+    <button class="nav-toggle" type="button" data-nav-toggle aria-controls="site-nav">
+      <span class="nav-toggle-icon" aria-hidden="true"><span></span><span></span><span></span></span>
+      <span class="nav-toggle-text">選單</span>
+    </button>
+    <nav class="site-nav" id="site-nav" data-nav aria-label="主要選單">
+      <ul class="nav-list" role="list">
+        <li><a href="index.html">首頁</a></li>
+        <li><a href="about.html">關於我們</a></li>
+        <li><a href="services.html">服務項目</a></li>
+        <li><a href="projects.html">工程實績</a></li>
+        <li><a href="contact.html">聯絡我們</a></li>
+      </ul>
+    </nav>
+    <div class="header-actions">
+      <a class="header-call" data-attr="href:company.phoneHref">
+        <span class="header-call-label">電話</span>
+        <span class="header-call-num" data-bind="company.phone"></span>
+      </a>
+      <a class="btn btn--sm header-cta" href="contact.html">工程洽詢</a>
+    </div>
+  </div>
+</header>
+
+<main id="main">
+  <section class="page-head" aria-labelledby="page-title">
+    <div class="wrap">
+      <p class="page-en" lang="en">CONTACT</p>
+      <h1 class="page-title" id="page-title">聯絡我們</h1>
+      <p class="page-lead" data-bind="copy.contactLead"></p>
+    </div>
+  </section>
+
+  <section class="section" aria-labelledby="info-title">
+    <div class="wrap contact-grid">
+      <div class="contact-info">
+        <div class="board-head">
+          <h2 class="board-title" id="info-title">聯絡資訊</h2>
+          <p class="board-en" lang="en">CONTACT</p>
+        </div>
+        <table class="board-table contact-table" aria-labelledby="info-title">
+          <tbody>
+            <tr>
+              <th scope="row">公司地址</th>
+              <td>
+                <span class="contact-address" data-bind="company.address"></span>
+                <a class="map-link" data-map-link href="#map">在 Google 地圖開啟<span class="sr-only">（另開視窗）</span></a>
+              </td>
+            </tr>
+            <tr><th scope="row">聯絡電話</th><td><a class="contact-phone" data-attr="href:company.phoneHref" data-bind="company.phone"></a></td></tr>
+            <tr><th scope="row">傳真</th><td data-bind="company.fax"></td></tr>
+            <tr><th scope="row">電子郵件</th><td><a data-attr="href:company.emailHref" data-bind="company.email"></a></td></tr>
+            <tr><th scope="row">營業時間</th><td data-bind="company.hours"></td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="contact-form">
+        <div class="board-head">
+          <h2 class="board-title" id="form-title">線上留言</h2>
+          <p class="board-en" lang="en">ENQUIRY</p>
+        </div>
+        <form class="form" data-demo-form aria-labelledby="form-title">
+          <div class="form-row">
+            <div class="field">
+              <label for="f-name">姓名 <span class="req">必填</span></label>
+              <input id="f-name" name="name" type="text" autocomplete="name" required>
+            </div>
+            <div class="field">
+              <label for="f-phone">聯絡電話 <span class="req">必填</span></label>
+              <input id="f-phone" name="phone" type="tel" autocomplete="tel" required>
+            </div>
+          </div>
+          <div class="form-row">
+            <div class="field">
+              <label for="f-email">Email</label>
+              <input id="f-email" name="email" type="email" autocomplete="email">
+            </div>
+            <div class="field">
+              <label for="f-type">工程類型</label>
+              <select id="f-type" name="type">
+                <option value="">請選擇</option>
+                <template data-each="form.types"><option data-attr="value:item" data-bind="item"></option></template>
+              </select>
+            </div>
+          </div>
+          <div class="field">
+            <label for="f-message">需求說明 <span class="req">必填</span></label>
+            <textarea id="f-message" name="message" rows="6" required placeholder="工程類型、地點、規模與預計時程"></textarea>
+          </div>
+          <div class="form-actions">
+            <p class="form-consent">
+              <label><input type="checkbox" name="consent" required>我已閱讀並同意<a href="privacy.html">隱私權政策</a>，並同意<span data-bind="company.shortName"></span>為聯絡與工程洽詢的目的處理我提供的個人資料。</label>
+            </p>
+            <button class="btn" type="submit">送出留言</button>
+          </div>
+          <p class="form-status" data-form-status hidden></p>
+          <p class="form-note" data-bind="form.note"></p>
+        </form>
+      </div>
+    </div>
+  </section>
+
+  <section class="section section--mist" id="map" aria-labelledby="map-title">
+    <div class="wrap">
+      <div class="board-head">
+        <h2 class="board-title" id="map-title">公司位置</h2>
+        <p class="board-en" lang="en">LOCATION</p>
+      </div>
+      <div class="map-frame"><iframe data-map></iframe></div>
+    </div>
+  </section>
+</main>
+
+<footer class="site-footer on-dark">
+  <div class="wrap footer-grid">
+    <div class="footer-brand">
+      <img class="footer-mark" src="../shared/img/logo-mark.png" width="48" height="48" alt="">
+      <p class="footer-name" data-bind="company.name"></p>
+      <p class="footer-en" lang="en" data-bind="company.nameEn"></p>
+      <dl class="footer-reg">
+        <div><dt>營造業登記證</dt><dd data-bind="company.license"></dd></div>
+        <div><dt>統一編號</dt><dd data-bind="company.taxId"></dd></div>
+      </dl>
+    </div>
+    <div class="footer-col">
+      <h2 class="footer-head">聯絡資訊</h2>
+      <dl class="footer-info">
+        <div><dt>地址</dt><dd data-bind="company.address"></dd></div>
+        <div><dt>電話</dt><dd><a data-attr="href:company.phoneHref" data-bind="company.phone"></a></dd></div>
+        <div><dt>傳真</dt><dd data-bind="company.fax"></dd></div>
+        <div><dt>Email</dt><dd><a data-attr="href:company.emailHref" data-bind="company.email"></a></dd></div>
+        <div><dt>營業時間</dt><dd data-bind="company.hours"></dd></div>
+      </dl>
+    </div>
+    <nav class="footer-col footer-nav" aria-label="頁尾導覽">
+      <h2 class="footer-head">網站導覽</h2>
+      <ul role="list">
+        <li><a href="index.html">首頁</a></li>
+        <li><a href="about.html">關於我們</a></li>
+        <li><a href="services.html">服務項目</a></li>
+        <li><a href="projects.html">工程實績</a></li>
+        <li><a href="contact.html">聯絡我們</a></li>
+      </ul>
+    </nav>
+  </div>
+  <div class="wrap footer-bottom">
+    <p>© <span data-bind="$year"></span> <span data-bind="company.name"></span></p>
+  </div>
+</footer>
+</body>
+</html>

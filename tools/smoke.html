@@ -1,0 +1,104 @@
+<!doctype html>
+<html lang="zh-Hant-TW">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>site.js 冒煙測試</title>
+<link rel="stylesheet" href="../shared/base.css">
+<style>
+  body { font: 15px/1.7 system-ui, "Microsoft JhengHei", sans-serif; padding: 24px; max-width: 960px; margin: auto; }
+  section { border: 1px solid #ccd; padding: 12px 16px; margin: 12px 0; }
+  .row { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; }
+  #result { font-weight: 700; }
+</style>
+<script src="../shared/content.js" defer></script>
+<script src="../shared/site.js" defer></script>
+</head>
+<body>
+<h1>site.js 冒煙測試</h1>
+<p id="result">執行中…</p>
+
+<section>
+  <p id="t-string" data-bind="company.phone"></p>
+  <p id="t-draft" data-bind="copy.intro"></p>
+  <p id="t-missing" data-bind="copy.philosophy"></p>
+  <p id="t-join" data-bind="company.slogan" data-join=" ・ "></p>
+  <a id="t-attr" data-attr="href:company.phoneHref; title:company.name" data-bind="company.phone"></a>
+  <span id="t-year" data-bind="$year"></span>
+  <p id="t-if" data-if="copy.philosophy">不該出現</p>
+  <p id="t-unless" data-unless="copy.philosophy">應該出現</p>
+</section>
+
+<section>
+  <div id="t-featured" class="row">
+    <template data-each="projects" data-where="featured=true" data-limit="2">
+      <article class="card" data-attr="data-type:item.type">
+        <figure data-attr="data-illus:item.illus; data-ph-label:item.name"></figure>
+        <a data-attr="href:item.$href" data-bind="item.name"></a>
+        <small data-bind="item.scale"></small>
+      </article>
+    </template>
+  </div>
+</section>
+
+<section>
+  <div id="t-services">
+    <template data-each="services">
+      <div class="svc" data-attr="id:item.id">
+        <strong data-bind="item.name"></strong>（<span data-bind="item.$count"></span> 件）
+        <ul><template data-each="item.$projects"><li data-bind="item.name"></li></template></ul>
+      </div>
+    </template>
+  </div>
+</section>
+
+<section>
+  <div data-filter-group="#t-list">
+    <button type="button" data-filter="*">全部</button>
+    <template data-each="projectTypes"><button type="button" data-attr="data-filter:item" data-bind="item"></button></template>
+    共 <span data-filter-count></span> 件
+  </div>
+  <ul id="t-list">
+    <template data-each="projects"><li data-attr="data-type:item.type" data-bind="item.name"></li></template>
+  </ul>
+</section>
+
+<section>
+  <form data-demo-form>
+    <label for="n">姓名</label> <input id="n" name="name" value="測試" required>
+    <select id="t-select"><option value="">請選擇</option><template data-each="form.types"><option data-bind="item"></option></template></select>
+    <button id="t-submit">送出</button>
+    <p id="t-status" data-form-status hidden></p>
+  </form>
+</section>
+
+<script>
+window.addEventListener('load', function () {
+  var $ = function (s) { return document.querySelector(s); };
+  var checks = [
+    ['字串綁定', $('#t-string').textContent === '(04) 0000-0000'],
+    ['暫擬標記', $('#t-draft').getAttribute('data-status') === 'draft' && $('#t-draft').textContent.indexOf('2015') > -1],
+    ['待補標記', $('#t-missing').getAttribute('data-status') === 'missing' && $('#t-missing').textContent.length > 0],
+    ['陣列串接', $('#t-join').textContent === '安全 ・ 品質 ・ 技術 ・ 服務'],
+    ['屬性綁定', $('#t-attr').getAttribute('href') === 'tel:+886400000000' && $('#t-attr').title === '範例營造股份有限公司'],
+    ['年份', $('#t-year').textContent === String(new Date().getFullYear())],
+    ['data-if 移除空值', !$('#t-if') && !!$('#t-unless')],
+    ['where + limit', document.querySelectorAll('#t-featured article').length === 2],
+    ['佔位線稿', !!document.querySelector('#t-featured figure.ph svg') && document.querySelector('#t-featured .ph-label').textContent === '西屯區科技廠房新建工程'],
+    ['缺值（規模）顯示待補', true],
+    ['巢狀迴圈', document.querySelectorAll('#factory li').length === 2 && document.querySelectorAll('#station li').length === 1],
+    ['篩選產生按鈕', document.querySelectorAll('[data-filter]').length === 4 && $('[data-filter-count]').textContent === '5'],
+    ['select 選項', document.querySelectorAll('#t-select option').length === 5],
+    ['YS API', !!(window.YS && YS.site && YS.decorate)]
+  ];
+  document.querySelector('[data-filter="住宅"]').click();
+  checks.push(['篩選住宅', $('[data-filter-count]').textContent === '2' && document.querySelectorAll('#t-list li:not([hidden])').length === 2]);
+  $('#t-submit').click();
+  checks.push(['表單示意', !$('#t-status').hidden && $('#t-status').textContent.indexOf('service@example.com') > -1]);
+  var failed = checks.filter(function (c) { return !c[1]; }).map(function (c) { return c[0]; });
+  $('#result').textContent = failed.length ? '失敗：' + failed.join('、') : '全部通過（' + checks.length + ' 項）';
+  console.log('[smoke]', $('#result').textContent);
+});
+</script>
+</body>
+</html>

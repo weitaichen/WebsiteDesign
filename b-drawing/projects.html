@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="zh-Hant-TW" data-style="b">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>工程實績｜範例營造股份有限公司</title>
+<meta name="description" content="範例營造的工程實績圖說表，可依廠房、住宅、加油站篩選，列出工程名稱、類型、地點、完工年份與規模。">
+<link rel="icon" type="image/png" sizes="32x32" href="../shared/img/favicon-32x32.png">
+<link rel="apple-touch-icon" href="../shared/img/apple-touch-icon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=Noto+Sans+TC:wght@400;500;700&display=swap">
+<link rel="stylesheet" href="../shared/base.css">
+<link rel="stylesheet" href="style.css">
+<script src="../shared/content.js" defer></script>
+<script src="../shared/site.js" defer></script>
+<script src="style.js" defer></script>
+</head>
+<body>
+<a class="skip-link" href="#main">跳到主要內容</a>
+<div class="sheet">
+
+  <header class="site-header">
+    <div class="header-inner">
+      <a class="brand" href="index.html">
+        <img class="brand-mark" src="../shared/img/logo-mark.png" width="44" height="44" alt="">
+        <span class="brand-text">
+          <span class="brand-name" data-bind="company.shortName"></span>
+          <span class="brand-en" data-bind="company.shortNameEn"></span>
+        </span>
+      </a>
+      <button class="nav-toggle" type="button" data-nav-toggle aria-controls="site-menu">
+        <span class="nav-toggle-icon" aria-hidden="true"></span>
+        <span class="nav-toggle-text">選單</span>
+      </button>
+      <div class="nav-panel" id="site-menu">
+        <nav class="site-nav" data-nav aria-label="主選單">
+          <ul role="list">
+            <li><a href="index.html">首頁</a></li>
+            <li><a href="about.html">關於我們</a></li>
+            <li><a href="services.html">服務項目</a></li>
+            <li><a href="projects.html">工程實績</a></li>
+            <li><a href="contact.html">聯絡我們</a></li>
+          </ul>
+        </nav>
+        <div class="header-contact">
+          <a class="header-tel" data-attr="href:company.phoneHref"><span class="tag-mono" aria-hidden="true">TEL</span><span data-bind="company.phone"></span></a>
+          <a class="btn btn-primary btn-sm" href="contact.html">工程洽詢</a>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main id="main">
+
+    <div class="page-head">
+      <div class="wrap">
+        <p class="eyebrow">PROJECTS</p>
+        <h1 class="page-title">工程實績</h1>
+        <p class="lead" data-bind="copy.projectsLead"></p>
+      </div>
+    </div>
+
+    <section class="band band-tight" aria-labelledby="schedule-title">
+      <div class="wrap">
+        <div class="sec-head">
+          <span class="sec-mark" aria-hidden="true">SCHEDULE</span>
+          <h2 id="schedule-title">圖說表</h2>
+        </div>
+
+        <div class="list-bar">
+          <div class="filter" data-filter-group="#project-list" role="group" aria-label="依工程類型篩選">
+            <button type="button" data-filter="*">全部</button>
+            <template data-each="projectTypes"><button type="button" data-attr="data-filter:item" data-bind="item"></button></template>
+          </div>
+          <p class="list-count" aria-live="polite">共 <span class="num" data-filter-count></span> 件</p>
+        </div>
+
+        <table class="schedule">
+          <caption class="sr-only">工程實績圖說表</caption>
+          <thead>
+            <tr>
+              <th scope="col" class="sch-col-ph"><span class="sr-only">照片</span><span aria-hidden="true">PHOTO</span></th>
+              <th scope="col">工程名稱</th>
+              <th scope="col">類型</th>
+              <th scope="col">地點</th>
+              <th scope="col">完工</th>
+              <th scope="col">規模</th>
+            </tr>
+          </thead>
+          <tbody id="project-list">
+            <template data-each="projects">
+              <tr class="sch-row" data-attr="data-type:item.type">
+                <td class="sch-ph"><figure data-attr="data-illus:item.illus" data-ph-label=""></figure></td>
+                <td class="sch-name"><a data-attr="href:item.$href" data-bind="item.name"></a></td>
+                <td class="sch-type" data-label="類型"><span data-bind="item.typeFull"></span></td>
+                <td class="sch-loc" data-label="地點"><span data-bind="item.location"></span></td>
+                <td class="sch-year" data-label="完工"><span class="num" data-bind="item.year"></span></td>
+                <td class="sch-scale" data-label="規模"><span data-bind="item.scale"></span></td>
+              </tr>
+            </template>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <section class="band cta" aria-labelledby="cta-title">
+      <div class="wrap">
+        <div class="cta-box">
+          <div class="cta-text">
+            <p class="eyebrow">CONTACT</p>
+            <h2 id="cta-title" data-bind="copy.ctaTitle"></h2>
+            <p data-bind="copy.ctaText"></p>
+          </div>
+          <div class="cta-actions">
+            <a class="cta-tel" data-attr="href:company.phoneHref"><span class="tag-mono" aria-hidden="true">TEL</span><span class="cta-tel-num" data-bind="company.phone"></span></a>
+            <a class="btn btn-primary" href="contact.html">工程洽詢</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <footer class="title-block">
+    <div class="tb-grid">
+      <div class="tb-cell tb-contractor">
+        <img class="tb-mark" src="../shared/img/logo-mark.png" width="40" height="40" alt="">
+        <dl>
+          <dt>承造人<span>CONTRACTOR</span></dt>
+          <dd class="tb-name" data-bind="company.name"></dd>
+          <dd class="tb-en" data-bind="company.nameEn"></dd>
+        </dl>
+      </div>
+      <dl class="tb-cell tb-license">
+        <dt>營造業登記證<span>LICENSE</span></dt>
+        <dd data-bind="company.license"></dd>
+      </dl>
+      <dl class="tb-cell tb-tax">
+        <dt>統一編號<span>TAX ID</span></dt>
+        <dd class="num" data-bind="company.taxId"></dd>
+      </dl>
+      <dl class="tb-cell tb-sheet">
+        <dt>圖名<span>SHEET</span></dt>
+        <dd class="tb-sheet-name">工程實績</dd>
+      </dl>
+      <dl class="tb-cell tb-address">
+        <dt>地址<span>ADDRESS</span></dt>
+        <dd data-bind="company.address"></dd>
+      </dl>
+      <dl class="tb-cell tb-phone">
+        <dt>電話／傳真<span>TEL / FAX</span></dt>
+        <dd class="num"><a data-attr="href:company.phoneHref" data-bind="company.phone"></a></dd>
+        <dd class="num"><span class="tb-sub">傳真</span><span data-bind="company.fax"></span></dd>
+      </dl>
+      <dl class="tb-cell tb-date">
+        <dt>更新日期<span>DATE</span></dt>
+        <dd class="num" data-bind="meta.updated"></dd>
+      </dl>
+      <dl class="tb-cell tb-mail">
+        <dt>Email／營業時間<span>MAIL / HOURS</span></dt>
+        <dd><a data-attr="href:company.emailHref" data-bind="company.email"></a></dd>
+        <dd data-bind="company.hours"></dd>
+      </dl>
+      <nav class="tb-cell tb-nav" aria-label="頁尾導覽">
+        <p class="tb-label">索引<span>INDEX</span></p>
+        <ul role="list">
+          <li><a href="index.html">首頁</a></li>
+          <li><a href="about.html">關於我們</a></li>
+          <li><a href="services.html">服務項目</a></li>
+          <li><a href="projects.html">工程實績</a></li>
+          <li><a href="contact.html">聯絡我們</a></li>
+        </ul>
+      </nav>
+      <p class="tb-cell tb-copy"><small>© <span data-bind="$year"></span> <span data-bind="company.name"></span></small></p>
+    </div>
+  </footer>
+
+</div>
+</body>
+</html>

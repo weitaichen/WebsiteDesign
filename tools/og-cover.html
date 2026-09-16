@@ -1,0 +1,63 @@
+<!doctype html>
+<html lang="zh-Hant-TW">
+<head>
+<meta charset="utf-8">
+<title>分享縮圖來源（1200×630）</title>
+<!--
+  社群分享縮圖（og:image）的來源頁，文字從 shared/content.js 讀取。
+  重新產生：用 1200×630 的視窗截圖這一頁，存成 shared/img/og-cover.png。
+  客戶提供實際照片後，建議改成「完工照片 + 公司名稱」的版本。
+-->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;700;900&display=swap">
+<style>
+  * { box-sizing: border-box; margin: 0; }
+  body {
+    width: 1200px; height: 630px; overflow: hidden;
+    display: grid; grid-template-columns: 18px 1fr;
+    font-family: "Noto Sans TC", "PingFang TC", "Microsoft JhengHei", sans-serif;
+    color: #16202E; background: #fff;
+  }
+  .edge { background: linear-gradient(#1B2A4A 0 60%, #E2001A 60% 78%, #00593F 78% 100%); }
+  .inner { display: flex; flex-direction: column; justify-content: center; gap: 34px; padding: 0 84px; }
+  .brand { display: flex; align-items: center; gap: 28px; }
+  .brand img { width: 132px; height: 132px; }
+  .name { font-size: 76px; font-weight: 900; letter-spacing: .1em; line-height: 1; color: #1B2A4A; }
+  .en { margin-top: 14px; font-size: 22px; font-weight: 500; letter-spacing: .26em; color: #5B6675; }
+  .slogan { display: flex; align-items: center; gap: 22px; }
+  .mark { width: 16px; height: 16px; background: #E2001A; }
+  .slogan span { font-size: 44px; font-weight: 500; letter-spacing: .3em; color: #1B2A4A; }
+  .meta { display: flex; align-items: center; gap: 18px; font-size: 26px; font-weight: 500; color: #5B6675; }
+  .meta i { width: 7px; height: 7px; background: #C6CCD6; font-style: normal; }
+  .rule { width: 100%; height: 3px; background: #1B2A4A; }
+</style>
+<script src="../shared/content.js" defer></script>
+</head>
+<body>
+<div class="edge"></div>
+<div class="inner">
+  <div class="brand">
+    <img src="../shared/img/logo-mark@2x.png" alt="">
+    <div>
+      <p class="name" id="name"></p>
+      <p class="en" id="en"></p>
+    </div>
+  </div>
+  <div class="rule"></div>
+  <p class="slogan"><span class="mark"></span><span id="slogan"></span></p>
+  <p class="meta"><span id="grade"></span><i></i><span id="city"></span><i></i><span id="phone"></span></p>
+</div>
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+  var c = window.SITE.company;
+  document.getElementById('name').textContent = c.shortName;
+  document.getElementById('en').textContent = c.shortNameEn;
+  document.getElementById('slogan').textContent = c.slogan.join('　');
+  document.getElementById('grade').textContent = c.grade;
+  document.getElementById('city').textContent = c.city;
+  document.getElementById('phone').textContent = c.phone;
+});
+</script>
+</body>
+</html>

@@ -1,0 +1,14 @@
+# 本機工具設定（Claude App 預覽等）
+.claude/
+
+# tools/publish.py 的輸出
+dist/
+
+# Python
+__pycache__/
+*.pyc
+
+# 系統檔
+.DS_Store
+Thumbs.db
+desktop.ini

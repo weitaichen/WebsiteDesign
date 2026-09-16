@@ -1,0 +1,141 @@
+<!doctype html>
+<html lang="zh-Hant-TW">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>營造業官網｜風格提案</title>
+<meta name="description" content="營造業官網的四種風格提案（虛構示範資料）：告示牌、施工圖、清水模、工地圍籬。">
+<meta name="robots" content="noindex, nofollow">
+<link rel="icon" type="image/png" sizes="32x32" href="shared/img/favicon-32x32.png">
+<link rel="apple-touch-icon" href="shared/img/apple-touch-icon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;700&display=swap">
+<link rel="stylesheet" href="shared/base.css">
+<style>
+  :root {
+    --navy: #1b2a4a; --ink: #18202c; --muted: #5d6675; --line: #d9dee6; --ground: #f3f5f8; --white: #fff; --red: #e2001a;
+    --focus: #1b2a4a;
+  }
+  body { background: var(--ground); color: var(--ink); font: 400 15px/1.7 "Noto Sans TC", "PingFang TC", "Microsoft JhengHei", sans-serif; }
+  .wrap { width: min(1240px, 100% - 40px); margin-inline: auto; }
+
+  .top { background: var(--white); border-bottom: 1px solid var(--line); }
+  .top .wrap { display: flex; align-items: center; gap: 16px; padding: 18px 0; }
+  .brand { display: flex; align-items: center; gap: 12px; text-decoration: none; color: var(--navy); }
+  .brand img { width: 40px; height: 40px; }
+  .brand strong { display: block; font-size: 17px; letter-spacing: .08em; }
+  .brand small { display: block; font-size: 10.5px; letter-spacing: .18em; color: var(--muted); }
+  .top .meta { margin-left: auto; font-size: 13px; color: var(--muted); text-align: right; }
+
+  .intro { padding: 56px 0 28px; }
+  .intro h1 { font-size: clamp(26px, 3.4vw, 38px); line-height: 1.3; color: var(--navy); letter-spacing: .04em; }
+  .intro p { max-width: 46em; margin-top: 14px; color: var(--muted); }
+  .legend { display: flex; flex-wrap: wrap; gap: 8px 22px; margin-top: 18px; font-size: 13px; color: var(--muted); }
+  .legend span[data-status] { color: var(--ink); }
+
+  .grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 28px; padding: 16px 0 72px; }
+  .card { background: var(--white); border: 1px solid var(--line); border-radius: 6px; overflow: hidden; display: flex; flex-direction: column; }
+  .thumb { position: relative; display: block; aspect-ratio: 16 / 10; overflow: hidden; background: #e4e8ee; border-bottom: 1px solid var(--line); }
+  .thumb iframe { position: absolute; top: 0; left: 0; width: 1440px; max-width: none; height: 900px; border: 0; transform-origin: 0 0; pointer-events: none; }
+  .thumb:hover::after, .thumb:focus-visible::after {
+    content: "進入風格"; position: absolute; right: 14px; bottom: 14px; padding: 6px 12px; border-radius: 999px;
+    background: rgba(18, 21, 27, .88); color: #fff; font-size: 13px;
+  }
+  .body { padding: 20px 22px 22px; display: grid; gap: 12px; }
+  .title { display: flex; align-items: baseline; gap: 10px; flex-wrap: wrap; }
+  .title b { font-size: 13px; color: var(--muted); letter-spacing: .1em; }
+  .title h2 { font-size: 22px; color: var(--navy); letter-spacing: .06em; }
+  .title span { font-size: 14px; color: var(--muted); }
+  .concept { color: var(--ink); }
+  .specs { display: flex; align-items: center; gap: 14px; flex-wrap: wrap; font-size: 13px; color: var(--muted); }
+  .swatches { display: flex; }
+  .swatches i { width: 22px; height: 22px; border-radius: 50%; border: 2px solid var(--white); box-shadow: 0 0 0 1px var(--line); margin-right: -5px; }
+  .pages { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 2px; }
+  .pages a { padding: 5px 11px; border: 1px solid var(--line); border-radius: 999px; font-size: 13px; text-decoration: none; color: var(--navy); }
+  .pages a:hover { border-color: var(--navy); }
+
+  .foot { border-top: 1px solid var(--line); padding: 22px 0 40px; font-size: 13px; color: var(--muted); }
+
+  @media (max-width: 880px) {
+    .grid { grid-template-columns: 1fr; }
+    .top .meta { display: none; }
+  }
+</style>
+<script src="shared/content.js" defer></script>
+</head>
+<body>
+<a class="skip-link" href="#main">跳到主要內容</a>
+
+<header class="top">
+  <div class="wrap">
+    <a class="brand" href="index.html">
+      <img src="shared/img/logo-mark.png" alt="" width="40" height="40">
+      <span><strong>範例營造</strong><small>EXAMPLE CONSTRUCTION</small></span>
+    </a>
+    <p class="meta">官網風格提案<br>內容更新：<span id="updated"></span></p>
+  </div>
+</header>
+
+<main id="main" class="wrap">
+  <section class="intro">
+    <h1>四種風格，同一套網站架構</h1>
+    <p>四種風格用同一份內容、相同的 6 個頁面（首頁、關於我們、服務項目、工程實績、案件內頁、聯絡我們），差別只在視覺呈現。點縮圖進入風格；每頁左下角的切換列可以停在同一頁比較四種風格。</p>
+    <div class="legend">
+      <span><span data-status="missing">客戶尚未提供</span></span>
+      <span><span data-status="draft">依訪談表資料整理，待確認</span></span>
+      <span>照片位置目前是線稿佔位</span>
+    </div>
+  </section>
+
+  <div class="grid" id="styles"></div>
+</main>
+
+<footer class="foot">
+  <div class="wrap">公司名稱、聯絡資訊與工程實績皆為虛構示範資料，內容集中在 <code>shared/content.js</code>。</div>
+</footer>
+
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+  var SITE = window.SITE;
+  var info = {
+    a: { concept: '取材自工地的施工告示牌：深藍外框、楷書標題，把承造資訊當成公司門面。', colors: ['#1B2A4A', '#FFFFFF', '#D5DAE1', '#E2001A'], fonts: '霞鶴文楷／Noto Sans TC' },
+    b: { concept: '取材自施工圖：圖框、標題欄，加上依樓層數繪製的實績立面圖。', colors: ['#FAFBFC', '#2F4A7A', '#1B2A4A', '#00593F', '#E2001A'], fonts: 'Noto Sans TC／IBM Plex Mono' },
+    c: { concept: '取材自清水模：模板接縫與螺桿孔構成版面，大量留白、細字重。', colors: ['#EBEBE8', '#D6D6D2', '#26292B', '#6B4A3A'], fonts: 'Noto Sans TC 細體／Jost' },
+    d: { concept: '取材自工地圍籬：整排綠色浪板印上標語和大電話，醒目好記。', colors: ['#00593F', '#00432F', '#F6F7F5', '#E2001A'], fonts: 'Noto Sans TC 特粗／Big Shoulders Display' }
+  };
+  var pages = [['index.html', '首頁'], ['about.html', '關於我們'], ['services.html', '服務項目'], ['projects.html', '工程實績'], ['project.html?id=p01', '案件內頁'], ['contact.html', '聯絡我們']];
+
+  document.getElementById('updated').textContent = SITE.meta.updated;
+  var grid = document.getElementById('styles');
+  SITE.meta.styles.forEach(function (s) {
+    var d = info[s.id] || { concept: '', colors: [], fonts: '' };
+    var card = document.createElement('article');
+    card.className = 'card';
+    card.innerHTML =
+      '<a class="thumb" href="' + s.dir + '/index.html" aria-label="進入風格 ' + s.id.toUpperCase() + '：' + s.name + '">' +
+        '<iframe src="' + s.dir + '/index.html" title="" tabindex="-1" aria-hidden="true" loading="lazy"></iframe></a>' +
+      '<div class="body">' +
+        '<div class="title"><b>風格 ' + s.id.toUpperCase() + '</b><h2>' + s.name + '</h2><span>' + s.tagline + '</span></div>' +
+        '<p class="concept">' + d.concept + '</p>' +
+        '<div class="specs"><span class="swatches">' + d.colors.map(function (c) { return '<i style="background:' + c + '" title="' + c + '"></i>'; }).join('') + '</span>' +
+        '<span>字體：' + d.fonts + '</span></div>' +
+        '<nav class="pages" aria-label="風格 ' + s.id.toUpperCase() + ' 的頁面">' +
+          pages.map(function (p) { return '<a href="' + s.dir + '/' + p[0] + '">' + p[1] + '</a>'; }).join('') +
+        '</nav>' +
+      '</div>';
+    grid.appendChild(card);
+  });
+
+  function scaleThumbs() {
+    Array.prototype.forEach.call(document.querySelectorAll('.thumb'), function (t) {
+      var f = t.querySelector('iframe');
+      if (f) f.style.transform = 'scale(' + (t.clientWidth / 1440) + ')';
+    });
+  }
+  scaleThumbs();
+  window.addEventListener('resize', scaleThumbs);
+});
+</script>
+</body>
+</html>
