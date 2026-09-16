@@ -10,6 +10,14 @@
 直接用瀏覽器開啟 `index.html`（風格總覽），點縮圖進入任一風格。
 每個風格頁面的左下角都有切換列，可以停在同一頁直接比較四種風格。
 
+要用本機伺服器預覽時，在專案根目錄執行：
+
+```bash
+python tools/serve.py
+```
+
+再開啟 `http://localhost:8765`。這個伺服器會要求瀏覽器不要快取，修改 `shared/content.js` 或圖片後，重新整理就能看到最新內容。
+
 | 風格 | 資料夾 | 取材 |
 |---|---|---|
 | A 告示牌：穩重可信 | `a-notice/` | 工地施工告示牌，楷書標題、深藍框 |
@@ -48,6 +56,7 @@ a-notice/ … d-hoarding/   各風格的頁面、style.css（B、D 另有 style.
 tools/check.py        檢查工具：必要檔案、綁定路徑、站內連結、寫死的公司資料
 tools/publish.py      把選定的風格打包成正式站（寫入網域、GA4，產生 robots.txt、sitemap.xml）
 tools/og-cover.html   社群分享縮圖的來源頁（1200×630）
+tools/serve.py        本機預覽伺服器（不快取，改完重新整理就看得到）
 tools/smoke.html      site.js 的冒煙測試，用瀏覽器開啟後顯示「全部通過」
 tools/STYLE_BRIEF.md  四種風格的設計規格與綁定規則
 ```
